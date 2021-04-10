@@ -2,6 +2,9 @@ package pl.patryk.hexbattle;
 
 import org.junit.Test;
 
+import pl.patryk.hexbattle.Tokens.Hex;
+import pl.patryk.hexbattle.Tokens.HexDirection;
+
 import static org.junit.Assert.*;
 
 /**
@@ -14,4 +17,17 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+
+    @Test
+    public void elo()
+    {
+        Hex hexTest = new Hex();
+        Hex hexTest2 = new Hex();
+
+        hexTest.addNeighbours(hexTest2, HexDirection.FORWARD);
+
+
+    }
+
 }

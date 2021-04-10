@@ -1,8 +1,15 @@
 package pl.patryk.hexbattle.Tokens;
 
+import pl.patryk.hexbattle.Tokens.Ability.BaseAttack;
+
 public class Token {
 
-  int iniciatve;
+
+
+  BaseAttack baseAtack;
+
+
+
 
 
 
