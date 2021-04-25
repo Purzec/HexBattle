@@ -26,8 +26,15 @@ public class ExampleUnitTest {
         Hex hexTest2 = new Hex();
 
         hexTest.addNeighbours(hexTest2, HexDirection.FORWARD);
+        hexTest.pokazSasiadaNaHExie(hexTest,HexDirection.FORWARD);
+        hexTest.pokazSasiadaNaHExie(hexTest,HexDirection.BACK);
+        hexTest.getNeighbours(HexDirection.FORWARD);
 
-
+    }
+    @Test public void funkcje()
+    {
+        int imageID = R.drawable.token_1;
+        System.out.println(imageID);
     }
 
 }

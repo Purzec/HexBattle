@@ -11,12 +11,6 @@
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
 
-    <pl.patryk.hexbattle.Tokens.HexagonMaskView
-        android:id="@+id/elo"
-        android:layout_width="207dp"
-        android:layout_height="299dp"
-        android:src="@drawable/token_1" />
-
     <TextView
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
@@ -60,6 +54,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Start" />
+
+        <pl.patryk.hexbattle.Tokens.HexagonMaskView
+            android:id="@+id/elo"
+            android:layout_width="207dp"
+            android:layout_height="299dp"
+            android:src="@drawable/token_1" />
 
     </FrameLayout>
 

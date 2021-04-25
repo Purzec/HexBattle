@@ -112,10 +112,12 @@ public class FullscreenActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FullscreenActivity.this,Pop.class));
+                startActivity(new Intent(FullscreenActivity.this,GameBoard.class));
+
+
             }
         });
-HexagonMaskView elo = findViewById(R.id.elo);
+
 
 
 

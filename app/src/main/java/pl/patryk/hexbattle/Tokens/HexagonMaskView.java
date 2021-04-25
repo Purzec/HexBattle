@@ -30,6 +30,8 @@ public class HexagonMaskView extends androidx.appcompat.widget.AppCompatImageVie
         init();
     }
 
+
+
     private void init() {
         this.hexagonPath = new Path();
         this.hexagonBorderPath = new Path();

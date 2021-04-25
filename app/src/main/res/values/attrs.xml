@@ -9,4 +9,9 @@
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="CanvasTest">
+        <attr name="background_color" format="color" />
+    </declare-styleable>
+
+
 </resources>
