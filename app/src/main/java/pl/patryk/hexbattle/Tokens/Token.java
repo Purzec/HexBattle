@@ -1,30 +1,51 @@
 package pl.patryk.hexbattle.Tokens;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.AttributeSet;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 
+import pl.patryk.hexbattle.R;
 import pl.patryk.hexbattle.Tokens.Ability.BaseAttack;
 
-public class Token   {
+public class Token  {
+
 
  String nazwa;
- ImageView obrazek;
+ Drawable obrazek;
  Hex hex;
  int initiative;
  ArrayList<BaseAttack> attack;
+ HexagonMaskView hexagonMaskView;
 
+ boolean obrazeniaOtrzymane;
 
+    public Token() {
+    }
 
-    public Token(String nazwa, ImageView obrazek) {
+    public Token(String nazwa, Drawable obrazek) {
     this.nazwa = nazwa;
     this.obrazek = obrazek;
   }
+
+    public Token(String nazwa, Hex hex, int initiative, ArrayList<BaseAttack> attack) {
+        this.nazwa = nazwa;
+        this.hex = hex;
+        this.initiative = initiative;
+        this.attack = attack;
+    }
+
+    public boolean isObrazeniaOtrzymane() {
+        return obrazeniaOtrzymane;
+    }
+
+    public void setObrazeniaOtrzymane(boolean obrazeniaOtrzymane) {
+        this.obrazeniaOtrzymane = obrazeniaOtrzymane;
+    }
 
     public String getNazwa() {
         return nazwa;
@@ -34,11 +55,11 @@ public class Token   {
         this.nazwa = nazwa;
     }
 
-    public ImageView getObrazek() {
+    public Drawable getObrazek() {
         return obrazek;
     }
 
-    public void setObrazek(ImageView obrazek) {
+    public void setObrazek(Drawable obrazek) {
         this.obrazek = obrazek;
     }
 
@@ -64,5 +85,13 @@ public class Token   {
 
     public void setAttack(ArrayList<BaseAttack> attack) {
         this.attack = attack;
+    }
+
+    public HexagonMaskView getHexagonMaskView() {
+        return hexagonMaskView;
+    }
+
+    public void setHexagonMaskView(HexagonMaskView hexagonMaskView) {
+        this.hexagonMaskView = hexagonMaskView;
     }
 }

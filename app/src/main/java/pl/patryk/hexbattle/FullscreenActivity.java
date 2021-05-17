@@ -113,6 +113,7 @@ public class FullscreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(FullscreenActivity.this,GameBoard.class));
+                startActivity(new Intent(FullscreenActivity.this,Pop.class));
 
 
             }

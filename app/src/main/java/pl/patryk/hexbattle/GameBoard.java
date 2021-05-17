@@ -1,5 +1,6 @@
 package pl.patryk.hexbattle;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.ViewTreeObserver;
@@ -21,6 +22,7 @@ import pl.patryk.hexbattle.Tokens.Ability.BaseAttack;
 import pl.patryk.hexbattle.Tokens.Hex;
 import pl.patryk.hexbattle.Tokens.HexDirection;
 import pl.patryk.hexbattle.Tokens.HexagonMaskView;
+import pl.patryk.hexbattle.Tokens.TestToken;
 import pl.patryk.hexbattle.Tokens.Token;
 import pl.patryk.hexbattle.model.CanvasTest;
 
@@ -33,6 +35,8 @@ public class GameBoard extends Activity {
    private ArrayList<Hex> hexOnBoard;
 ImageView imageView;
 ImageView imageView2;
+    ArrayList<Token> lista;
+    HexagonMaskView grarfikaTokenuPrzeciwnika,grafikaTokenuGracza;
 
     private int xDelta;
     private int yDelta;
@@ -50,12 +54,11 @@ CanvasTest canvasTest;
         mainLayout = (RelativeLayout) findViewById(R.id.main);
         canvasTest = findViewById(R.id.canvasTest);
         mainLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @SuppressLint("ClickableViewAccessibility")
+            @SuppressLint({"ClickableViewAccessibility", "UseCompatLoadingForDrawables"})
             @Override
             public void onGlobalLayout() {
      /*           hexOnBoard = new ArrayList<>(19);
-                hex1 = new Hex();
-                hex2 = new Hex();
+
                 hex3 = new Hex();
                 hex4 = new Hex();
                 hex5 = new Hex();
@@ -73,7 +76,9 @@ CanvasTest canvasTest;
                 hex17 = new Hex();
                 hex18 = new Hex();
                 hex19 = new Hex();*/
-               /* hex1.addNeighbours(hex2, HexDirection.BACK_LEFT);
+               /* hex1 = new Hex();
+                hex2 = new Hex();
+               hex1.addNeighbours(hex2, HexDirection.BACK_LEFT);
                 hex1.addNeighbours(hex3, HexDirection.BACK);
                 hex1.addNeighbours(hex4, HexDirection.BACK_RIGHT);
                 hex2.addNeighbours(hex3, HexDirection.BACK_RIGHT);
@@ -87,6 +92,7 @@ CanvasTest canvasTest;
                 System.out.println(canvasTest.getScreenWidth());
                 listatest = canvasTest.pobierzKordy();
                 System.out.println(listatest.get(0).getHexpositionX());
+                System.out.println(listatest.get(0).getHexpositionY());
 
 
 /*
@@ -94,20 +100,70 @@ przyklad usuniecia elementu z widoku
 imageView2= findViewById(R.id.imageView);
 mainLayout.removeView(imageView2);*/
 
+
+
+                grarfikaTokenuPrzeciwnika = new HexagonMaskView(getApplicationContext());
+                grarfikaTokenuPrzeciwnika.setImageDrawable(getDrawable(R.drawable.tokenprzeciwnika1plansza));
+                ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(mainLayout.getWidth() / 10, mainLayout.getHeight()/5 );
+                grarfikaTokenuPrzeciwnika.setLayoutParams(lp);
+                mainLayout.addView(grarfikaTokenuPrzeciwnika);
+                Token testToken = new Token();
+                testToken.setHexagonMaskView(grarfikaTokenuPrzeciwnika);
+
+
+                grarfikaTokenuPrzeciwnika.setX(listatest.get(2).getHexpositionX()- grarfikaTokenuPrzeciwnika.getLayoutParams().width/2);
+                grarfikaTokenuPrzeciwnika.setY(listatest.get(2).getHexpositionY()-grarfikaTokenuPrzeciwnika.getLayoutParams().height/2);
+
+
+
+                grafikaTokenuGracza = new HexagonMaskView(getApplicationContext());
+                grafikaTokenuGracza.setImageDrawable(getDrawable(R.drawable.tokengracza1plansza));
+                ViewGroup.LayoutParams parametryGracza = new ViewGroup.LayoutParams(mainLayout.getWidth() / 10, mainLayout.getHeight()/5 );
+                grafikaTokenuGracza.setLayoutParams(parametryGracza);
+                mainLayout.addView(grafikaTokenuGracza);
+                Token tokenGracza = new Token();
+                tokenGracza.setHexagonMaskView(grafikaTokenuGracza);
+
+                grafikaTokenuGracza.setOnTouchListener(onTouchListener(grafikaTokenuGracza));
+/*
+
                 imageView = new ImageView(getApplicationContext());
                 imageView.setImageDrawable(getDrawable(R.drawable.token_2));
                 ViewGroup.LayoutParams lp =new ViewGroup.LayoutParams(mainLayout.getWidth()/10, mainLayout.getHeight()/2);
                 imageView.setOnTouchListener(onTouchListener());
                 imageView.setLayoutParams(lp);
-                Token token = new Token("Token 2",imageView);
+
+
+                Token token = new Token();
                 token.setInitiative(3);
                 BaseAttack baseAttack = new BaseAttack(2,HexDirection.FORWARD, BaseAttack.TypeOfAttack.MELLE);
                 ArrayList<BaseAttack> listaatakow1=new ArrayList<>(9);
                 listaatakow1.add(baseAttack);
                 token.setAttack(listaatakow1);
-                token.getObrazek().setImageDrawable(getDrawable(R.drawable.token_1));
+                token.setObrazek(getDrawable(R.drawable.token_1));
                 mainLayout.addView(imageView);
                 mainLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+
+
+
+                Token token2 = new Token();
+                token.setInitiative(2);
+                BaseAttack baseAttack2 = new BaseAttack(2,HexDirection.FORWARD, BaseAttack.TypeOfAttack.MELLE);
+                ArrayList<BaseAttack> listaatakow12=new ArrayList<>(9);
+                listaatakow12.add(baseAttack2);
+                token.setAttack(listaatakow12);
+
+
+                lista  = new ArrayList<>(19);
+                lista.add(token);
+                lista.add(token2);
+*/
+                mainLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+
+
+
 
             }
         });
@@ -115,7 +171,7 @@ mainLayout.removeView(imageView2);*/
 
 
 
-    private OnTouchListener onTouchListener() {
+    private OnTouchListener onTouchListener(HexagonMaskView tokenG) {
         return new OnTouchListener() {
             @SuppressLint("ClickableViewAccessibility")
             @Override
@@ -131,12 +187,16 @@ mainLayout.removeView(imageView2);*/
 
                         break;
                     case MotionEvent.ACTION_UP:
-                        Toast.makeText(GameBoard.this,
-                                "I'm here!", Toast.LENGTH_SHORT)
-                                .show();
-                        takeOnNerbyEmptyPlace(imageView);
+                        takeOnNerbyEmptyPlace(tokenG);
+                        if (tokenG.getX()+tokenG.getWidth()/2==listatest.get(0).getHexpositionX()&& tokenG.getY()+tokenG.getHeight()/2==listatest.get(0).getHexpositionY())
+                        {
+                            Toast.makeText(GameBoard.this,
+                                    "Gratulacje, zrobiłeś to prawidłowo", Toast.LENGTH_SHORT)
+                                    .show();
+                            startActivity(new Intent(GameBoard.this,DrugaPlansza.class));
 
 
+                        }
                         break;
                     case MotionEvent.ACTION_MOVE:
                         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view
@@ -156,7 +216,7 @@ mainLayout.removeView(imageView2);*/
     }
 
 
-    private void takeOnNerbyEmptyPlace(ImageView image) {
+    private void takeOnNerbyEmptyPlace(HexagonMaskView image) {
         float pozycjaKoncowaObrazkaX = image.getX()+(float) image.getWidth()/2;
         float pozycjaKoncowaObrazkaY = image.getY() + (float) image.getHeight()/2;
         float pierwszaPozycja;
@@ -176,17 +236,14 @@ mainLayout.removeView(imageView2);*/
             }
         }
 
-        image.setX(najbliższyHex.getHexpositionX()-imageView.getWidth()/2);
-        image.setY(najbliższyHex.getHexpositionY()-imageView.getHeight()/2);
+        image.setX(najbliższyHex.getHexpositionX()-image.getWidth()/2);
+        image.setY(najbliższyHex.getHexpositionY()-image.getHeight()/2);
         najbliższyHex.setBusy(true);
 
 
-    }
-
-   public void bitwa()
-    {
 
     }
+
 
     private float zmierzOdleglosc(float a, float b, float palecX, float palecY) {
         float odlegloscX = Math.abs(palecX - a);

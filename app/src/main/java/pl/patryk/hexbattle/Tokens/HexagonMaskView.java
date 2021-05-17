@@ -58,15 +58,46 @@ public class HexagonMaskView extends androidx.appcompat.widget.AppCompatImageVie
         float centerX = getMeasuredWidth() / 2f;
         float centerY = getMeasuredHeight() / 2f;
 
+
+      /*
+        powielony kod
         this.hexagonPath.reset();
-        this.hexagonPath.moveTo(centerX, centerY + radius);
+        this.hexagonPath.moveTo(centerX, centerY+radius);
         this.hexagonPath.lineTo(centerX - triangleHeight, centerY + halfRadius);
         this.hexagonPath.lineTo(centerX - triangleHeight, centerY - halfRadius);
         this.hexagonPath.lineTo(centerX, centerY - radius);
         this.hexagonPath.lineTo(centerX + triangleHeight, centerY - halfRadius);
         this.hexagonPath.lineTo(centerX + triangleHeight, centerY + halfRadius);
+        this.hexagonPath.close();*/
+
+        this.hexagonPath.reset();
+        this.hexagonPath.moveTo(centerX-radius, centerY );
+        this.hexagonPath.lineTo(centerX -halfRadius, centerY - radius);
+        this.hexagonPath.lineTo(centerX + halfRadius, centerY-radius );
+        this.hexagonPath.lineTo(centerX+radius, centerY );
+        this.hexagonPath.lineTo(centerX + halfRadius, centerY + radius);
+        this.hexagonPath.lineTo(centerX - halfRadius, centerY+radius );
         this.hexagonPath.close();
 
+
+
+
+    /*    float radiusBorder = radius - 5f;
+        float halfRadiusBorder = radiusBorder / 2f;
+        float triangleBorderHeight = (float) (Math.sqrt(3.0) * halfRadiusBorder);
+        this.hexagonBorderPath.reset();
+        this.hexagonBorderPath.moveTo(centerX-radius, centerY );
+        this.hexagonPath.lineTo(centerX -halfRadiusBorder, centerY - radiusBorder);
+        this.hexagonPath.lineTo(centerX + halfRadiusBorder, centerY-radiusBorder );
+        this.hexagonPath.lineTo(centerX+radiusBorder, centerY );
+        this.hexagonPath.lineTo(centerX + halfRadiusBorder, centerY + radiusBorder);
+        this.hexagonPath.lineTo(centerX - halfRadiusBorder, centerY+radiusBorder );
+        this.hexagonBorderPath.close();*/
+
+
+
+       /*
+       rysowanie obramówki
         float radiusBorder = radius - 5f;
         float halfRadiusBorder = radiusBorder / 2f;
         float triangleBorderHeight = (float) (Math.sqrt(3.0) * halfRadiusBorder);
@@ -78,7 +109,7 @@ public class HexagonMaskView extends androidx.appcompat.widget.AppCompatImageVie
         this.hexagonBorderPath.lineTo(centerX, centerY - radiusBorder);
         this.hexagonBorderPath.lineTo(centerX + triangleBorderHeight, centerY - halfRadiusBorder);
         this.hexagonBorderPath.lineTo(centerX + triangleBorderHeight, centerY + halfRadiusBorder);
-        this.hexagonBorderPath.close();
+        this.hexagonBorderPath.close();*/
         invalidate();
     }
 

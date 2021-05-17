@@ -65,12 +65,15 @@ public class Hex {
         this.neighbours.set(neighbourHexDirection.getDirectionValue(), hexNeighbour);
     }
 
-    public void getNeighbours( HexDirection hexDirection)
+    public Hex getNeighbours( HexDirection hexDirection)
     {
         int kierunek = hexDirection.getDirectionValue();
         this.neighbours.get(kierunek);
-        System.out.println(this.neighbours.get(kierunek));
+        return this.neighbours.get(kierunek);
     }
+
+
+
 
 
     public Hex(List<Hex> neighbours, List<HexDirection> directionList, float hexpositionX, float hexpositionY) {
@@ -113,4 +116,6 @@ public class Hex {
     public void setBusy(boolean busy) {
         this.busy = busy;
     }
+
+
 }

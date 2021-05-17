@@ -7,15 +7,18 @@
         android:id="@+id/dalej"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tekstSamouczka"
-        android:layout_marginTop="57dp"
-        android:text="@android:string/ok" />
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="26dp"
+        android:text="@android:string/ok"
+        android:onClick="ok"/>
 
     <TextView
-        android:id="@+id/tekstSamouczka"
-        android:layout_width="153dp"
-        android:layout_height="54dp"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Witaj w HEXBATTLE wersja Beta 1.0. Pozwól,żę szybko opowiem ci jak mniej wiecej działa gra. Plansza składa się z pola bitwy na ktorych będziemy umieszczać zetony
 bedące odwzorowaniem naszych wojowików w tym krótkim poradniku pokaze ci jak działają podstawowe mechaniki. na początekk kierunek ataku kolorem zielonem oznaczono kierunek ataku twojego wojownika
-przenieś go na plansze tak żeby zaatakował wojownika Rasy Ludzi." />
+przenieś go na plansze tak żeby zaatakował wojownika Rasy Ludzi."
+        android:textColor="#061A8E" />
+
 </RelativeLayout>
